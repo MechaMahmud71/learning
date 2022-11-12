@@ -7,7 +7,7 @@ import { UserModule } from "./user/user.module";
 
 @Module({
   imports: [
-    MongooseModule.forRoot("mongodb://0.0.0.0:27017/zaynax-backend"),
+    MongooseModule.forRoot("mongodb://0.0.0.0:27017/e-commerce"),
     AuthModule,
     UserModule,
   ],

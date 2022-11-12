@@ -1,0 +1,69 @@
+[
+    {
+        "category": "Mobile",
+        "productID": "samsung123456",
+        "keywords": [
+            "Mobile",
+            "mobile",
+            "mobiles",
+            "samsung",
+            "samgsungMobile"
+        ],
+        "priority": 5
+    },
+    {
+        "category": "Mobile",
+        "productID": "samsung23456",
+        "keywords": [
+            "Mobile",
+            "mobile",
+            "samsung",
+            "samgsungMobile"
+        ],
+        "priority": 5
+    },
+    {
+        "category": "Mobile",
+        "productID": "samsungTest1",
+        "keywords": [
+            "Mobile",
+            "mobile",
+            "mobiles",
+            "samgsungMobile"
+        ],
+        "priority": 4
+    },
+    {
+        "category": "Mobile",
+        "productID": "samsungTest2",
+        "keywords": [
+            "Mobile",
+            "mobile",
+            "mobiles",
+            "samgsungMobile"
+        ],
+        "priority": 4
+    },
+    {
+        "category": "Mobile",
+        "productID": "samsungTest3",
+        "keywords": [
+            "Mobile",
+            "mobile",
+            "mobiles",
+            "samgsungMobile"
+        ],
+        "priority": 4
+    },
+    {
+        "category": "Mobile",
+        "productID": "samsungTest4",
+        "keywords": [
+            "Mobile",
+            "mobile",
+            "mobiles",
+            "samgsungMobile"
+        ],
+        "priority": 3
+    }
+]

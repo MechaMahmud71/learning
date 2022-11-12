@@ -1,4 +1,4 @@
-import { Controller, Get, Param, UseGuards, Put } from "@nestjs/common";
+import { Controller, Get, Param, UseGuards, Put, Post } from "@nestjs/common";
 import { ApiTags } from "@nestjs/swagger";
 import { UserInterface } from "./Interfacec/user.interface";
 import { UserService } from "./user.service";
@@ -30,47 +30,21 @@ export class UserController {
     const worker = new Worker("./src/user/worker.js", {
       workerData: {
         path: "./worker.ts",
+        value: {
+          android: [1, 2, 3, 4],
+          ios: [5, 6, 7, 8],
+        },
       },
     });
     worker.on("message", async (data) => {
-      console.log(data, "hi");
-      if (data) {
-        const user = await this.userService.updateUser(id);
-        console.log(user);
-      }
-      return data;
+      console.log(data);
+      // await this.userService.getAllUsers();
     });
-    console.log("end");
-
-    // await this.multi();
-    // console.log(id);
-    // return await this.userService.updateUser(id, 100);
+    return "User is updating";
   }
 
-  // private async multi() {
-  //   try {
-  //     let total = 0;
-  //     let i = 0;
-  //     while (i !== 10) {
-  //       const { data } = await axios.get(
-  //         "https://jsonplaceholder.typicode.com/users"
-  //       );
-  //       if (data) {
-  //         i++;
-  //         console.log(i);
-  //         total++;
-  //       }
-  //     }
-
-  //     if (total === 10) {
-  //       // const user = await this.userService.updateUser(total);
-  //     }
-
-  //     return total;
-
-  //     // parentPort.postMessage(total);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
+  @Post("test-event")
+  async testEvent() {
+    return await this.userService.fireEvent();
+  }
 }
