@@ -1,9 +1,18 @@
-import { Controller, Get, Param, UseGuards, Put, Post } from "@nestjs/common";
+import {
+  Controller,
+  Get,
+  Param,
+  UseGuards,
+  Put,
+  Post,
+  Body,
+} from "@nestjs/common";
 import { ApiTags } from "@nestjs/swagger";
 import { UserInterface } from "./Interfacec/user.interface";
 import { UserService } from "./user.service";
 import { Worker } from "worker_threads";
 import axios from "axios";
+import { UserUpdateDTO } from "./userUpdate.dto";
 
 @ApiTags("User Api Routes")
 @Controller("users")
@@ -26,7 +35,7 @@ export class UserController {
   }
 
   @Put("/:id")
-  async calculate(@Param("id") id: string) {
+  async calculate(@Param("id") id: string, @Body() body: UserUpdateDTO) {
     const worker = new Worker("./src/user/worker.js", {
       workerData: {
         path: "./worker.ts",
@@ -38,7 +47,7 @@ export class UserController {
     });
     worker.on("message", async (data) => {
       console.log(data);
-      // await this.userService.getAllUsers();
+      await this.userService.updateUser(id, body);
     });
     return "User is updating";
   }

@@ -1,7 +1,7 @@
 import { parentPort, workerData } from "worker_threads";
 
-const user = [];
-const admin = [];
+const user = [...workerData.value.android];
+const admin = [...workerData.value.ios];
 
 for (let i = 0; i < 100000000; i++) {
   user.push(i);

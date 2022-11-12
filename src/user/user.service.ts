@@ -4,6 +4,7 @@ import { Model } from "mongoose";
 import { UserDocument } from "./user.schema";
 import { UserInterface } from "./Interfacec/user.interface";
 import { EventEmitter2, OnEvent } from "@nestjs/event-emitter";
+import { UserUpdateDTO } from "./userUpdate.dto";
 
 @Injectable()
 export class UserService {
@@ -23,12 +24,12 @@ export class UserService {
     return user;
   }
 
-  async updateUser(id: string) {
+  async updateUser(id: string, body: UserUpdateDTO) {
     const user = await this.userModel.findOneAndUpdate(
       { _id: id },
       {
         $set: {
-          userName: "new Name",
+          userName: body.userName,
         },
       },
       { new: true }
